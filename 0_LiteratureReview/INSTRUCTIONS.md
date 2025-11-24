@@ -18,6 +18,3 @@ You might want to answer the following questions:
 ## Submission
 
 Complete the template provided in the [README](README.md) of this folder.
-
-timestamp,price,load,pv_gen,wind_gen,temp,humidity,irradiance,hour,day_of_week,is_holiday,lag_price_1h,lag_price_24h,lag_load_1h,lag_load_24h,rolling_mean_load_24h,rolling_std_load_24h,hour_sin,hour_cos
-2025-01-01 00:00,45.2,62000,1200,800,2.1,85,0,0,3,0,44.5,50.1,61800,59000,61200,2000,0.0000,1.0000
