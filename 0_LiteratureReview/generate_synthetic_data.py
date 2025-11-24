@@ -3,11 +3,13 @@
 Generate synthetic hourly data for testing the baseline pipeline.
 Writes 0_LiteratureReview/feature_template.csv with realistic-ish patterns.
 """
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import os
 
-OUT_CSV = os.path.join("0_LiteratureReview", "feature_template.csv")
+SCRIPT_DIR = Path(__file__).resolve().parent
+OUT_CSV = SCRIPT_DIR / "feature_template.csv"
 
 def generate(start="2024-01-01", periods=24*365, seed=42):
     rng = pd.date_range(start=start, periods=periods, freq="h")
@@ -49,6 +51,7 @@ def generate(start="2024-01-01", periods=24*365, seed=42):
     df["rolling_std_load_24h"] = df["load"].rolling(24, min_periods=1).std().fillna(0)
     df["hour_sin"] = np.sin(2 * np.pi * df["hour"] / 24)
     df["hour_cos"] = np.cos(2 * np.pi * df["hour"] / 24)
+    OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(OUT_CSV, index=False)
     print(f"Wrote synthetic CSV to {OUT_CSV} with {len(df)} rows")
 
