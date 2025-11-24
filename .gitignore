@@ -161,3 +161,4 @@ cython_debug/
 0_LiteratureReview/baseline_model.pkl
 .venv
 __pycache__/
+anaconda_projects/
